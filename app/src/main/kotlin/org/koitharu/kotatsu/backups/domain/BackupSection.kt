@@ -16,13 +16,14 @@ enum class BackupSection(
 	BOOKMARKS("bookmarks"),
 	SOURCES("sources"),
 	SCROBBLING("scrobbling"),
+	STATS("statistics"),
 	;
 
 	companion object {
 
 		fun of(entry: ZipEntry): BackupSection? {
 			val name = entry.name.lowercase(Locale.ROOT)
-			return entries.first { x -> x.entryName == name }
+			return entries.find { x -> x.entryName == name }
 		}
 	}
 }
